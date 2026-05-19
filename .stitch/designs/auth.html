@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SpendIQ - Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#003640",
+                      "surface-variant": "#37333d",
+                      "surface": "#15121b",
+                      "text-muted": "#94A3B8",
+                      "surface-container": "#211e27",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#340080",
+                      "surface-glass": "rgba(30, 41, 59, 0.7)",
+                      "primary-gradient-end": "#4338CA",
+                      "on-primary-fixed-variant": "#5516be",
+                      "surface-bright": "#3b3742",
+                      "primary": "#d0bcff",
+                      "tertiary-container": "#ca801e",
+                      "secondary-container": "#03b5d3",
+                      "secondary": "#4cd7f6",
+                      "error-container": "#93000a",
+                      "primary-container": "#a078ff",
+                      "on-error": "#690005",
+                      "outline": "#958ea0",
+                      "on-surface": "#e7e0ed",
+                      "on-secondary-fixed": "#001f26",
+                      "background": "#0F172A",
+                      "surface-container-lowest": "#0f0d15",
+                      "on-tertiary-fixed-variant": "#673d00",
+                      "primary-fixed-dim": "#d0bcff",
+                      "on-tertiary-container": "#3f2300",
+                      "inverse-primary": "#6d3bd7",
+                      "surface-container-highest": "#37333d",
+                      "primary-fixed": "#e9ddff",
+                      "error": "#ffb4ab",
+                      "on-tertiary": "#482900",
+                      "tertiary-fixed-dim": "#ffb869",
+                      "surface-tint": "#d0bcff",
+                      "surface-container-low": "#1d1a23",
+                      "surface-container-high": "#2c2832",
+                      "on-surface-variant": "#cbc3d7",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "outline-variant": "#494454",
+                      "text-primary": "#F8FAFC",
+                      "on-background": "#e7e0ed",
+                      "inverse-surface": "#e7e0ed",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-primary-fixed": "#23005c",
+                      "tertiary-fixed": "#ffdcbb",
+                      "tertiary": "#ffb869",
+                      "secondary-fixed": "#acedff",
+                      "accent-negative": "#F43F5E",
+                      "on-secondary-container": "#00424e",
+                      "border-glass": "rgba(255, 255, 255, 0.1)",
+                      "on-tertiary-fixed": "#2c1700",
+                      "on-primary": "#3c0091",
+                      "surface-dim": "#15121b",
+                      "inverse-on-surface": "#322f39"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "container-padding": "24px",
+                      "unit": "4px",
+                      "stack-lg": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "h1": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display": ["Inter"],
+                      "body-md": ["Inter"],
+                      "h2": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                      "label-sm": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-input-focus:focus {
+            outline: none;
+            border-bottom-color: #06B6D4;
+            box-shadow: 0 4px 12px -2px rgba(6, 182, 212, 0.3);
+        }
+        .primary-glow:hover {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+      </style>
+</head>
+<body class="bg-background font-body-md text-text-primary min-h-screen flex items-center justify-center p-container-padding relative overflow-hidden">
+<!-- Ambient Background Accents -->
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<main class="w-full max-w-md z-10">
+<!-- Logo Section -->
+<div class="text-center mb-stack-lg">
+<h1 class="font-display text-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">SpendIQ</h1>
+<p class="font-label-sm text-label-sm text-text-muted mt-stack-sm uppercase tracking-widest">Next Gen Finance</p>
+</div>
+<!-- Auth Card -->
+<div class="glass-card rounded-xl p-stack-lg shadow-2xl relative">
+<!-- Auth Toggle Switch -->
+<div class="bg-surface-container-low p-1 rounded-full flex items-center mb-stack-lg">
+<button class="flex-1 py-2 text-label-sm font-label-sm rounded-full bg-surface-container-high text-primary shadow-sm transition-all duration-300">
+                    Login
+                </button>
+<button class="flex-1 py-2 text-label-sm font-label-sm rounded-full text-text-muted hover:text-on-surface transition-all duration-300">
+                    Sign Up
+                </button>
+</div>
+<!-- Form Content -->
+<form class="space-y-stack-md">
+<!-- Inputs Section -->
+<div class="space-y-stack-md">
+<!-- Email Field -->
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-text-muted mb-unit" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[20px]" data-icon="mail">mail</span>
+<input class="w-full bg-surface-container-lowest/50 border-b border-white/5 py-3 pl-10 pr-4 text-on-surface font-body-md transition-all duration-300 neon-input-focus rounded-t-lg" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="relative">
+<div class="flex justify-between items-center mb-unit">
+<label class="block font-label-sm text-label-sm text-text-muted" for="password">Password</label>
+<a class="text-label-sm font-label-sm text-text-muted hover:text-secondary transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[20px]" data-icon="lock">lock</span>
+<input class="w-full bg-surface-container-lowest/50 border-b border-white/5 py-3 pl-10 pr-4 text-on-surface font-body-md transition-all duration-300 neon-input-focus rounded-t-lg" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full py-4 bg-gradient-to-r from-[#8B5CF6] to-[#4338CA] rounded-lg font-h2 text-h2 text-white font-bold transition-all duration-300 hover:translate-y-[-2px] active:scale-95 primary-glow mt-stack-md" type="submit">
+                    Log In
+                </button>
+<!-- Divider -->
+<div class="flex items-center gap-stack-sm my-stack-md">
+<div class="flex-1 h-[1px] bg-white/10"></div>
+<span class="text-label-sm font-label-sm text-text-muted">or continue with</span>
+<div class="flex-1 h-[1px] bg-white/10"></div>
+</div>
+<!-- Social Actions -->
+<div class="grid grid-cols-2 gap-stack-md">
+<button class="flex items-center justify-center gap-stack-sm py-3 px-stack-md glass-card rounded-lg hover:bg-white/5 transition-colors" type="button">
+<img alt="Google" class="w-5 h-5 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6xw9MRlxF7t-iZ7i2dGZiFJdtyZYJQP12exWla5v7jY2czkpYb_U1w2-i9eEKPFQefC1mnNaoISdhD6h1ikij5XpoEeaIMxVXWIrTrFuVED12Pm6RZJhUC5Oso_pbmX5zC60-em7zi71kZPhFp46Oyz3e4zgQ9Jwxhk3QGk3avk4NSfwXgvSDBb5BUWl9cBErNBhBeHchDZV_Cn933mK1dLV5fwzWZ8wd6xi8Gkt0oZyjeY_muJ187uw0iSjsnxXy-bMkzvlfJ1XG"/>
+<span class="text-label-sm font-label-sm">Google</span>
+</button>
+<button class="flex items-center justify-center gap-stack-sm py-3 px-stack-md glass-card rounded-lg hover:bg-white/5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+<span class="text-label-sm font-label-sm">Github</span>
+</button>
+</div>
+</form>
+<!-- Trust Badge -->
+<div class="mt-stack-lg pt-stack-md border-t border-white/5 flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[16px] leading-none" data-icon="enhanced_encryption" data-weight="fill" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<p class="font-label-sm text-label-sm text-text-muted/60 uppercase tracking-wider">Secure &amp; Encrypted</p>
+</div>
+</div>
+<!-- Visual Credibility Section -->
+<div class="mt-stack-lg flex flex-col items-center">
+<p class="text-label-sm font-label-sm text-text-muted mb-stack-md">Trusted by high-growth startups globally</p>
+<div class="flex flex-wrap justify-center gap-stack-lg opacity-40 grayscale contrast-125">
+<div class="h-6 w-24 bg-white/20 rounded-full animate-pulse"></div>
+<div class="h-6 w-20 bg-white/20 rounded-full animate-pulse"></div>
+<div class="h-6 w-28 bg-white/20 rounded-full animate-pulse"></div>
+</div>
+</div>
+</main>
+<!-- Global Footer Component (Implicit shell requirement) -->
+<footer class="fixed bottom-0 w-full py-stack-md px-container-padding flex flex-col md:flex-row justify-between items-center gap-4 border-t border-white/5 bg-background/80 backdrop-blur-sm z-20">
+<p class="font-label-sm text-label-sm text-text-muted">© 2024 SpendIQ. All rights reserved. Built for the next generation of finance.</p>
+<div class="flex gap-stack-lg">
+<a class="font-label-sm text-label-sm text-text-muted hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-secondary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

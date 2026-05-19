@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-body;
+  }
+
+  /* Prevent autofill from ruining the design */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0F172A inset !important;
+    -webkit-text-fill-color: white !important;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface-glass backdrop-blur-md border border-border-glass;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(208, 188, 255, 0.3);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px rgba(76, 215, 246, 0.3);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-container to-primary-gradient-end text-on-primary px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:-translate-y-1 glow-primary active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply glass-card text-on-surface px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:bg-white/10 active:scale-95;
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
